@@ -1,0 +1,1 @@
+package-edugis.bat 2.6.1 1 edugis-qgis x86
