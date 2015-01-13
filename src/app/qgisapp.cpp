@@ -97,7 +97,8 @@
 #include "qgisappstylesheet.h"
 #include "qgis.h"
 #include "qgisplugin.h"
-#include "qgsabout.h"
+//#include "qgsabout.h"
+#include "qgscustomabout.h"
 #include "qgsapplayertreeviewmenuprovider.h"
 #include "qgsapplication.h"
 #include "qgsattributeaction.h"
@@ -286,6 +287,8 @@
 #include "qgscolorwidgetfactory.h"
 #include "qgsrelationreferencefactory.h"
 #include "qgsdatetimeeditfactory.h"
+
+#include "edugisconfig.h"
 
 //
 // Conditional Includes
@@ -2636,62 +2639,68 @@ void QgisApp::sponsors()
 
 void QgisApp::about()
 {
-  static QgsAbout *abt = NULL;
+  //static QgsAbout *abt = NULL;
+  static QgsCustomAbout *abt = NULL;
   if ( !abt )
   {
     QApplication::setOverrideCursor( Qt::WaitCursor );
-    abt = new QgsAbout( this );
-    QString versionString = "<html><body><div align='center'><table width='100%'>";
+    //abt = new QgsAbout( this );
+    abt = new QgsCustomAbout( this );
 
-    versionString += "<tr>";
-    versionString += "<td>" + tr( "QGIS version" )       + "</td><td>" + QGis::QGIS_VERSION + "</td>";
-    versionString += "<td>" + tr( "QGIS code revision" ) + "</td><td>" + QGis::QGIS_DEV_VERSION + "</td>";
+    QString versionString = QString(EDUGIS_VERSION);
+    abt->setVersion(versionString);
 
-    versionString += "</tr><tr>";
+//    QString versionString = "<html><body><div align='center'><table width='100%'>";
 
-    versionString += "<td>" + tr( "Compiled against Qt" ) + "</td><td>" + QT_VERSION_STR + "</td>";
-    versionString += "<td>" + tr( "Running against Qt" )  + "</td><td>" + qVersion() + "</td>";
+//    versionString += "<tr>";
+//    versionString += "<td>" + tr( "QGIS version" )       + "</td><td>" + QGis::QGIS_VERSION + "</td>";
+//    versionString += "<td>" + tr( "QGIS code revision" ) + "</td><td>" + QGis::QGIS_DEV_VERSION + "</td>";
 
-    versionString += "</tr><tr>";
+//    versionString += "</tr><tr>";
 
-    versionString += "<td>" + tr( "Compiled against GDAL/OGR" ) + "</td><td>" + GDAL_RELEASE_NAME + "</td>";
-    versionString += "<td>" + tr( "Running against GDAL/OGR" )  + "</td><td>" + GDALVersionInfo( "RELEASE_NAME" ) + "</td>";
+//    versionString += "<td>" + tr( "Compiled against Qt" ) + "</td><td>" + QT_VERSION_STR + "</td>";
+//    versionString += "<td>" + tr( "Running against Qt" )  + "</td><td>" + qVersion() + "</td>";
 
-    versionString += "</tr><tr>";
+//    versionString += "</tr><tr>";
 
-    versionString += "<td>" + tr( "Compiled against GEOS" ) + "</td><td>" + GEOS_CAPI_VERSION + "</td>";
-    versionString += "<td>" + tr( "Running against GEOS" ) + "</td><td>" + GEOSversion() + "</td>";
+//    versionString += "<td>" + tr( "Compiled against GDAL/OGR" ) + "</td><td>" + GDAL_RELEASE_NAME + "</td>";
+//    versionString += "<td>" + tr( "Running against GDAL/OGR" )  + "</td><td>" + GDALVersionInfo( "RELEASE_NAME" ) + "</td>";
 
-    versionString += "</tr><tr>";
+//    versionString += "</tr><tr>";
 
-    versionString += "<td>" + tr( "PostgreSQL Client Version" ) + "</td><td>";
-#ifdef HAVE_POSTGRESQL
-    versionString += PG_VERSION;
-#else
-    versionString += tr( "No support." );
-#endif
-    versionString += "</td>";
+//    versionString += "<td>" + tr( "Compiled against GEOS" ) + "</td><td>" + GEOS_CAPI_VERSION + "</td>";
+//    versionString += "<td>" + tr( "Running against GEOS" ) + "</td><td>" + GEOSversion() + "</td>";
 
-    versionString += "<td>" +  tr( "SpatiaLite Version" ) + "</td><td>";
-    versionString += spatialite_version();
-    versionString += "</td>";
+//    versionString += "</tr><tr>";
 
-    versionString += "</tr><tr>";
+//    versionString += "<td>" + tr( "PostgreSQL Client Version" ) + "</td><td>";
+//#ifdef HAVE_POSTGRESQL
+//    versionString += PG_VERSION;
+//#else
+//    versionString += tr( "No support." );
+//#endif
+//    versionString += "</td>";
 
-    versionString += "<td>" + tr( "QWT Version" ) + "</td><td>" + QWT_VERSION_STR + "</td>";
-    versionString += "<td>" + tr( "PROJ.4 Version" ) + "</td><td>" + QString::number( PJ_VERSION ) + "</td>";
+//    versionString += "<td>" +  tr( "SpatiaLite Version" ) + "</td><td>";
+//    versionString += spatialite_version();
+//    versionString += "</td>";
 
-    versionString += "</tr><tr>";
+//    versionString += "</tr><tr>";
 
-    versionString += "<td>" + tr( "QScintilla2 Version" ) + "</td><td>" + QSCINTILLA_VERSION_STR + "</td>";
+//    versionString += "<td>" + tr( "QWT Version" ) + "</td><td>" + QWT_VERSION_STR + "</td>";
+//    versionString += "<td>" + tr( "PROJ.4 Version" ) + "</td><td>" + QString::number( PJ_VERSION ) + "</td>";
 
-#ifdef QGISDEBUG
-    versionString += "<td colspan=2>" + tr( "This copy of QGIS writes debugging output." ) + "</td>";
-#endif
+//    versionString += "</tr><tr>";
 
-    versionString += "</tr></table></div></body></html>";
+//    versionString += "<td>" + tr( "QScintilla2 Version" ) + "</td><td>" + QSCINTILLA_VERSION_STR + "</td>";
 
-    abt->setVersion( versionString );
+//#ifdef QGISDEBUG
+//    versionString += "<td colspan=2>" + tr( "This copy of QGIS writes debugging output." ) + "</td>";
+//#endif
+
+//    versionString += "</tr></table></div></body></html>";
+
+//    abt->setVersion( versionString );
 
     QApplication::restoreOverrideCursor();
   }

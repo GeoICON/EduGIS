@@ -42,7 +42,16 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -138,7 +147,16 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -154,7 +172,16 @@
          </property>
          <widget class="QWidget" name="mOptsPage_01">
           <layout class="QVBoxLayout" name="verticalLayout_4">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -191,8 +218,8 @@ p, li { white-space: pre-wrap; }
             </layout>
            </item>
            <item>
-            <widget class="QWebView" name="txtVersion" native="true">
-             <property name="url" stdset="0">
+            <widget class="QWebView" name="txtVersion">
+             <property name="url">
               <url>
                <string>about:blank</string>
               </url>
@@ -273,7 +300,16 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="page">
           <layout class="QVBoxLayout" name="verticalLayout_5">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -283,7 +319,16 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="page_2">
           <layout class="QVBoxLayout" name="verticalLayout_6">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -293,7 +338,16 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="page_3">
           <layout class="QGridLayout" name="gridLayout">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item row="0" column="0" rowspan="2">
@@ -347,7 +401,16 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="page_4">
           <layout class="QVBoxLayout" name="verticalLayout_7">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -361,12 +424,21 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="page_5">
           <layout class="QVBoxLayout" name="verticalLayout_8">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
-            <widget class="QWebView" name="txtTranslators" native="true">
-             <property name="url" stdset="0">
+            <widget class="QWebView" name="txtTranslators">
+             <property name="url">
               <url>
                <string>about:blank</string>
               </url>
@@ -377,7 +449,16 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="page_7">
           <layout class="QVBoxLayout" name="verticalLayout_10">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -394,7 +475,16 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="page_8">
           <layout class="QVBoxLayout" name="verticalLayout_11">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -423,7 +513,16 @@ p, li { white-space: pre-wrap; }
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item>
@@ -445,7 +544,7 @@ p, li { white-space: pre-wrap; }
   <customwidget>
    <class>QWebView</class>
    <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
+   <header>QtWebKitWidgets/QWebView</header>
   </customwidget>
  </customwidgets>
  <resources>

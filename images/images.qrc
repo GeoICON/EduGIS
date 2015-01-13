@@ -484,4 +484,10 @@
         <file>sponsors/platinum.png</file>
         <file>sponsors/silver.png</file>
     </qresource>
+    <qresource prefix="/images/edugis">
+        <file>edugis/moe-crest-150x158.png</file>
+        <file>edugis/moe_crest_300x245.png</file>
+        <file>edugis/qgis.png</file>
+        <file>edugis/geoicon.png</file>
+    </qresource>
 </RCC>
