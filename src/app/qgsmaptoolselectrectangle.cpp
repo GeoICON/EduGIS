@@ -47,8 +47,21 @@ void QgsMapToolSelectFeatures::canvasPressEvent( QMouseEvent *e )
   Q_UNUSED( e );
   mSelectRect.setRect( 0, 0, 0, 0 );
   mRubberBand = new QgsRubberBand( mCanvas, QGis::Polygon );
-  mRubberBand->setFillColor( mFillColor );
-  mRubberBand->setBorderColor( mBorderColour );
+  //mRubberBand->setFillColor( mFillColor );
+  //mRubberBand->setBorderColor( mBorderColour );
+
+  // Serge Markin (serge@geoicon.com)
+  // Modification for project edugis
+  QSettings settings;
+  int myRed = settings.value( "/qgis/default_selection_color_red", 180 ).toInt();
+  int myGreen = settings.value( "/qgis/default_selection_color_green", 180 ).toInt();
+  int myBlue = settings.value( "/qgis/default_selection_color_blue", 180 ).toInt();
+  int myTransparency = settings.value( "/qgis/default_selection_transparency", 65 ).toInt();
+  int myWidth = settings.value( "/qgis/default_selection_width", 2 ).toInt();
+  mRubberBand->setFillColor( QColor( myRed, myGreen, myBlue, myTransparency ) );
+  mRubberBand->setBorderColor( QColor( myRed, myGreen, myBlue, 100 ) );
+  mRubberBand->setWidth(myWidth);
+  // --------------------------------
 }
 
 

@@ -137,8 +137,15 @@ void QgsMapToolMeasureAngle::createRubberBand()
   int myRed = settings.value( "/qgis/default_measure_color_red", 180 ).toInt();
   int myGreen = settings.value( "/qgis/default_measure_color_green", 180 ).toInt();
   int myBlue = settings.value( "/qgis/default_measure_color_blue", 180 ).toInt();
-  mRubberBand->setColor( QColor( myRed, myGreen, myBlue, 100 ) );
-  mRubberBand->setWidth( 3 );
+  //mRubberBand->setColor( QColor( myRed, myGreen, myBlue, 100 ) );
+  //mRubberBand->setWidth( 3 );
+
+  // Updated by Serge Markin (serge@geoicon.com)
+  int myTransparency = settings.value( "/qgis/default_measure_transparency", 65 ).toInt();
+  int myWidth = settings.value( "/qgis/default_measure_width", 2 ).toInt();
+  mRubberBand->setColor( QColor( myRed, myGreen, myBlue, myTransparency ) );
+  mRubberBand->setWidth(myWidth);
+  // ---
 }
 
 QgsPoint QgsMapToolMeasureAngle::snapPoint( const QPoint& p )

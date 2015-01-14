@@ -126,7 +126,19 @@ void QgsMeasureTool::updateSettings()
   mRubberBand->setWidth( 3 );
   mRubberBandPoints->setIcon( QgsRubberBand::ICON_CIRCLE );
   mRubberBandPoints->setIconSize( 10 );
-  mRubberBandPoints->setColor( QColor( myRed, myGreen, myBlue, 150 ) );
+  //mRubberBandPoints->setColor( QColor( myRed, myGreen, myBlue, 150 ) );
+
+  // Updated by Serge Markin (serge@geoicon.com)
+  int myTransparency = settings.value( "/qgis/default_measure_transparency", 65 ).toInt();
+  int myWidth = settings.value( "/qgis/default_measure_width", 2 ).toInt();
+
+  qDebug() << "myTransparency" << myTransparency;
+  qDebug() << "myWidth" << myWidth;
+
+  mRubberBand->setColor( QColor( myRed, myGreen, myBlue, myTransparency ) );
+  mRubberBand->setWidth(myWidth);
+  // ---
+
   mDialog->updateSettings();
 }
 
