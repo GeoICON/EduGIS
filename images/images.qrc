@@ -39,6 +39,7 @@
         <file>flags/zh_TW.png</file>
         <file>icons/qgis-icon-16x16.png</file>
         <file>icons/qgis-icon-60x60.png</file>
+        <file>icons/edugis-icon-128x128.png</file>
         <file>north_arrows/default.png</file>
         <file>north_arrows/gpsarrow.svg</file>
         <file>north_arrows/gpsarrow2.svg</file>
@@ -493,5 +494,11 @@
         <file>sponsors/gold.png</file>
         <file>sponsors/platinum.png</file>
         <file>sponsors/silver.png</file>
+    </qresource>
+    <qresource prefix="/images/edugis">
+        <file>edugis/moe-crest-150x158.png</file>
+        <file>edugis/moe_crest_300x245.png</file>
+        <file>edugis/qgis.png</file>
+        <file>edugis/geoicon.png</file>
     </qresource>
 </RCC>

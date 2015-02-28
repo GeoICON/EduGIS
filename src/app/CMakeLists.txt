@@ -3,6 +3,7 @@ SET(QGIS_APP_SRCS
   qgisappinterface.cpp
   qgisappstylesheet.cpp
   qgsabout.cpp
+  qgscustomabout.cpp # Customization by GeoICON
   qgsapplayertreeviewmenuprovider.cpp
   qgssponsors.cpp
   qgsaddattrdialog.cpp
@@ -157,11 +158,16 @@ SET(QGIS_APP_SRCS
   qgsnewspatialitelayerdialog.cpp
 )
 
+SET (QGIS_APP_HDRS
+  edugisconfig.h
+)
+
 SET (QGIS_APP_MOC_HDRS
   qgisapp.h
   qgisappinterface.h
   qgisappstylesheet.h
   qgsabout.h
+  qgscustomabout.h # Customization by GeoICON
   qgsaddattrdialog.h
   qgsaddjoindialog.h
   qgsaddtaborgroup.h
