@@ -41,17 +41,16 @@ REM ***************************************************************************
 
 set PYTHONPATH=
 
-set MSVSDIR=c:\programs\msvs
-set VS90COMNTOOLS=%MSVSDIR%\Common7\Tools\
-call %MSVSDIR%\VC\vcvarsall.bat x86
+call "c:\programs\msvs2010\VC\vcvarsall.bat" x86
 
 for %%f in (%OSGEO4W_ROOT%\etc\ini\*.bat) do call "%%f"
 
 set INCLUDE=%INCLUDE%;%OSGEO4W_ROOT%\include
 set LIB=%LIB%;%OSGEO4W_ROOT%\lib
 
-REM ***************************************************************************
+set GRASS_VERSION=6.4.4
 
+REM ***************************************************************************
 
 set O4W_ROOT=%OSGEO4W_ROOT:\=/%
 
@@ -59,9 +58,23 @@ if not "%PROGRAMFILES(X86)%"=="" set PF86=%PROGRAMFILES(X86)%
 if "%PF86%"=="" set PF86=%PROGRAMFILES%
 if "%PF86%"=="" (echo PROGRAMFILES not set & goto error)
 
+REM -G "NMake Makefiles" ^
+REM -G "Visual Studio 10 2010" ^
+
+REM set CLCACHE_CL=c:\programs\msvs2010\VC\bin\cl.exe
+REM set CLCACHE_CL=c:\programs\msvs2010\VC\bin\cl.real.exe
+REM set CLCACHE_LOG=1
+REM set CLCACHE_DIR=c:\clcache
+REM set CLCACHE_NODIRECT=1
+
+REM -D CMAKE_C_COMPILER=c:/programs/clcache/dist/clcache.exe ^
+REM -D CMAKE_CXX_COMPILER=c:/programs/clcache/dist/clcache.exe
+
 set CMAKE_OPT=^
-  -G "Visual Studio 9 2008" ^
-  -D SIP_BINARY_PATH=%O4W_ROOT%/apps/Python27/sip.exe
+  -G "Visual Studio 10 2010" ^
+  -D SIP_BINARY_PATH=%O4W_ROOT%/apps/Python27/sip.exe ^
+  -D QWT_LIBRARY=%O4W_ROOT%/lib/qwt.lib ^
+  -D BUILD_TESTING=FALSE
 
 set BUILDCONF=Release
 
@@ -110,17 +123,25 @@ if exist CMakeCache.txt goto skipcmake
 echo CMAKE: %DATE% %TIME%
 if errorlevel 1 goto error
 
+rem -D CMAKE_CXX_FLAGS_RELEASE="/MD /MP /O2 /Ob2 /D NDEBUG" ^
+rem -D CMAKE_CXX_FLAGS_DEBUG="/MDd /MP /Od /Ob0 /D DEBUG /D QGISDEBUG=1" ^
+rem -D CMAKE_CXX_FLAGS_RELEASE="/MD /MP /O2 /Ob2 /DEBUG /INCREMENTAL /D QGISDEBUG=1" ^  
+rem -D TEST_DATA_DIR=c:/Projects/EduGIS/EduGIS/tests/testdata ^
+rem -D TEST_SERVER_URL=http://example.com ^
+
 cmake %CMAKE_OPT% ^
   -D PEDANTIC=TRUE ^
   -D WITH_QSPATIALITE=TRUE ^
-  -D WITH_MAPSERVER=FALSE ^
-  -D MAPSERVER_SKIP_ECW=TRUE ^
+  -D WITH_SERVER=FALSE ^
+  -D SERVER_SKIP_ECW=TRUE ^
   -D WITH_GLOBE=FALSE ^
   -D WITH_TOUCH=FALSE ^
   -D WITH_ORACLE=FALSE ^
   -D WITH_GRASS=FALSE ^
   -D WITH_CUSTOM_WIDGETS=TRUE ^
-  -D CMAKE_CXX_FLAGS_RELEASE="/MD /MP /O2 /Ob2 /D NDEBUG" ^
+  -D CMAKE_CXX_FLAGS_RELEASE="/MD /MP /Od /Ob0" ^
+  -D CMAKE_SHARED_LINKER_FLAGS="/INCREMENTAL /DEBUG" ^
+  -D CMAKE_MODULE_LINKER_FLAGS="/INCREMENTAL /DEBUG" ^
   -D CMAKE_BUILD_TYPE=%BUILDCONF% ^
   -D CMAKE_CONFIGURATION_TYPES=%BUILDCONF% ^
   -D GEOS_LIBRARY=%O4W_ROOT%/lib/geos_c.lib ^
@@ -133,7 +154,6 @@ cmake %CMAKE_OPT% ^
   -D QT_LIBRARY_DIR=%O4W_ROOT%/lib ^
   -D QT_HEADERS_DIR=%O4W_ROOT%/include/qt4 ^
   -D QWT_INCLUDE_DIR=%O4W_ROOT%/include/qwt ^
-  -D QWT_LIBRARY=%O4W_ROOT%/lib/qwt5.lib ^
   -D CMAKE_INSTALL_PREFIX=%O4W_ROOT%/apps/%PACKAGENAME% ^
   -D FCGI_INCLUDE_DIR=%O4W_ROOT%/include ^
   -D FCGI_LIBRARY=%O4W_ROOT%/lib/libfcgi.lib ^
@@ -242,8 +262,6 @@ move %PKGDIR%\bin\qbrowser.exe %OSGEO4W_ROOT%\bin\%PACKAGENAME%-browser-bin.exe
 if errorlevel 1 (echo move of browser executable failed & goto error)
 
 if not exist %PKGDIR%\qtplugins\sqldrivers mkdir %PKGDIR%\qtplugins\sqldrivers
-move %OSGEO4W_ROOT%\apps\qt4\plugins\sqldrivers\qsqlocispatial.dll %PKGDIR%\qtplugins\sqldrivers
-if errorlevel 1 (echo move of oci sqldriver failed & goto error)
 move %OSGEO4W_ROOT%\apps\qt4\plugins\sqldrivers\qsqlspatialite.dll %PKGDIR%\qtplugins\sqldrivers
 if errorlevel 1 (echo move of spatialite sqldriver failed & goto error)
 

@@ -1,1 +1,1 @@
-package-edugis.bat 2.6.1 1 edugis-qgis x86
+package-edugis.bat 2.8.1 1 edugis-qgis x86
