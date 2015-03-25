@@ -142,7 +142,7 @@ class APP_EXPORT QgsIdentifyResultsDialog: public QDialog, private Ui::QgsIdenti
     /** map tool was activated */
     void activate();
 
-  signals:
+signals:
     void selectedFeatureChanged( QgsVectorLayer *, QgsFeatureId featureId );
 
     // Emitted when raster identify format of a layer changed
@@ -253,6 +253,9 @@ class APP_EXPORT QgsIdentifyResultsDialog: public QDialog, private Ui::QgsIdenti
     QDockWidget *mDock;
 
     QVector<QgsIdentifyPlotCurve *> mPlotCurves;
+
+    /** customize ui for edugis */
+    void edugisCleanupUserInterface();
 };
 
 class QgsIdentifyResultsDialogMapLayerAction : public QAction

@@ -242,7 +242,7 @@
             <string notr="true"/>
            </property>
            <property name="text">
-            <string>&lt;a href=&quot;http://www.qgis.org/&quot;&gt;&lt;img src=&quot;:/images/edugis/edugis/qgis.png&quot;/&gt;&lt;br/&gt;&lt;span style=&quot; color:#333333; text-decoration: none;&quot;&gt;Powered by QGIS&lt;/span&gt;&lt;/a&gt;</string>
+            <string>&lt;a href=&quot;http://www.qgis.org/&quot;&gt;&lt;img src=&quot;:/images/edugis/edugis/qgis.png&quot;/&gt;&lt;br/&gt;&lt;span style=&quot; color:#333333; text-decoration: none;&quot;&gt;Powered by QGIS&amp;nbsp;2.8.1&lt;/span&gt;&lt;/a&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>

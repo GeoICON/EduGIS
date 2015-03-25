@@ -204,6 +204,9 @@ class APP_EXPORT QgsAttributeTableDialog : public QDialog, private Ui::QgsAttrib
     QgsFieldModel* mFieldModel;
 
     QgsRubberBand *mRubberBand;
+
+    /** customize ui for edugis */
+    void edugisCleanupUserInterface();
 };
 
 #endif

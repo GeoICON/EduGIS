@@ -44,6 +44,8 @@
 #include "qgsexpressionbuilderdialog.h"
 #include "qgsrubberband.h"
 
+#include "edugisutils.h"
+
 class QgsAttributeTableDock : public QDockWidget
 {
   public:
@@ -225,6 +227,8 @@ QgsAttributeTableDialog::QgsAttributeTableDialog( QgsVectorLayer *theLayer, QWid
   mUpdateExpressionText->setLayer( mLayer );
   mUpdateExpressionText->setLeftHandButtonStyle( true );
   editingToggled();
+
+  edugisCleanupUserInterface();
 }
 
 QgsAttributeTableDialog::~QgsAttributeTableDialog()
@@ -332,6 +336,27 @@ void QgsAttributeTableDialog::updateFieldFromExpressionSelected()
 {
   QgsFeatureIds filteredIds = mLayer->selectedFeaturesIds();
   runFieldCalculation( mLayer, mFieldCombo->currentText(), mUpdateExpressionText->currentField(), filteredIds );
+}
+
+void QgsAttributeTableDialog::edugisCleanupUserInterface()
+{
+//    // Hide toolbars
+//    EdugisUtils::hideLayout(horizontalLayout);
+//    EdugisUtils::hideLayout(horizontalLayout_4);
+
+    // Hide some buttons to simplify UI
+    mAddFeature->hide();
+    mExpressionSelectButton->hide();
+    mSelectedToTopButton->hide();
+    mInvertSelectionButton->hide();
+    mCopySelectedRowsButton->hide();
+    line_3->hide();
+    mRemoveAttribute->hide();
+    mAddAttribute->hide();
+    mOpenFieldCalculator->hide();
+
+//    // Set margin so it will look better
+//    layout()->setContentsMargins(5, 5, 5, 5);
 }
 
 void QgsAttributeTableDialog::runFieldCalculation( QgsVectorLayer* layer, QString fieldName, QString expression, QgsFeatureIds filteredIds )

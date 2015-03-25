@@ -1,6 +1,6 @@
 #ifndef EDUGISCONFIG_H
 #define EDUGISCONFIG_H
 
-#define EDUGIS_VERSION "1.3.0"
+#define EDUGIS_VERSION "2.0.0"
 
 #endif // EDUGISCONFIG_H

@@ -156,10 +156,13 @@ SET(QGIS_APP_SRCS
   pluginmanager/qgspluginitemdelegate.cpp
 
   qgsnewspatialitelayerdialog.cpp
+
+  edugisutils.cpp # Customization by GeoICON
 )
 
 SET (QGIS_APP_HDRS
   edugisconfig.h
+  edugisutils.h
 )
 
 SET (QGIS_APP_MOC_HDRS

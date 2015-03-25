@@ -60,6 +60,7 @@
 #include <qwt_legend.h>
 #include "qgsvectorcolorrampv2.h" // for random colors
 
+#include "edugisutils.h"
 
 QgsIdentifyResultsWebView::QgsIdentifyResultsWebView( QWidget *parent ) : QWebView( parent )
 {
@@ -331,6 +332,44 @@ QgsIdentifyResultsDialog::QgsIdentifyResultsDialog( QgsMapCanvas *canvas, QWidge
   connect( mOpenFormButton, SIGNAL( clicked() ), this, SLOT( featureForm() ) );
   connect( mClearToolButton, SIGNAL( clicked() ), this, SLOT( clear() ) );
   connect( mHelpToolButton, SIGNAL( clicked() ), this, SLOT( helpRequested() ) );
+
+  edugisCleanupUserInterface();
+}
+
+void QgsIdentifyResultsDialog::edugisCleanupUserInterface()
+{
+//    // Nowhere
+//    QRect nw(-1000, -1000, 0, 0);
+
+//    // Hide top toolbar
+//    mExpandToolButton->setGeometry(nw);
+//    mCollapseToolButton->setGeometry(nw);
+//    mExpandNewToolButton->setGeometry(nw);
+//    mOpenFormButton->setGeometry(nw);
+//    mClearToolButton->setGeometry(nw);
+//    mCopyToolButton->setGeometry(nw);
+//    mPrintToolButton->setGeometry(nw);
+//    stackedWidgetPage1->layout()->removeItem(horizontalLayout);
+
+//    // Hide bottom toolbar
+//    lblIdentifyMode->setGeometry(nw);
+//    cmbIdentifyMode->setGeometry(nw);
+//    cbxAutoFeatureForm->setGeometry(nw);
+//    stackedWidgetPage1->layout()->removeItem(horizontalLayout_2);
+
+//    // Hide bottomest toolbar
+//    lblViewMode->setGeometry(nw);
+//    cmbViewMode->setGeometry(nw);
+//    mHelpToolButton->setGeometry(nw);
+//    layout()->removeItem(horizontalLayout_3);
+
+    // Hide toolbars
+    EdugisUtils::hideLayout(horizontalLayout);
+    EdugisUtils::hideLayout(horizontalLayout_2);
+    EdugisUtils::hideLayout(horizontalLayout_3);
+
+    // Set margin so it will look better
+    layout()->setContentsMargins(5, 5, 5, 5);
 }
 
 QgsIdentifyResultsDialog::~QgsIdentifyResultsDialog()
